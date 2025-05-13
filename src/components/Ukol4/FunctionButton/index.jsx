@@ -1,7 +1,10 @@
 import './style.css';
 
-export const FunctionButton = ({ label }) => {
+export const FunctionButton = ({ label, onFunctionClick}) => {
   return (
-    <button className="numpad-button">{label}</button>
+    <button 
+    className="numpad-button"
+    onClick={()=>onFunctionClick()}
+    >{label}</button>
   );
 };

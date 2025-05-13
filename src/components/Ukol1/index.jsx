@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SwitchButton } from './SwitchButton';
 import './style.css';
 
@@ -30,10 +31,25 @@ import './style.css';
 */
 
 export const Ukol1 = () => {
+  const [bulbOn, setBulbOn] = useState(false)
+
+  const handleSwitch = (shouldBeOn) => {
+    if (shouldBeOn) {
+      if (window.confirm("Jsi si jsity, ze chces zapnout zarovku?")) {
+        setBulbOn(shouldBeOn);
+      }
+    } else {
+      setBulbOn(shouldBeOn)
+    }
+  };
+
   return (
     <>
-      <div className="bulb bulb--on" />
-      <SwitchButton label="Vypnout" />
+      <div className={bulbOn ? "bulb bulb--on" : "bulb"} />
+      <SwitchButton
+        onSwitch={handleSwitch}
+        on={bulbOn}
+      />
     </>
   );
 };
